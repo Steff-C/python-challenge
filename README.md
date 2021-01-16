@@ -1,2 +1,2 @@
 # python-challenge
-Homework 3 repo
+Homework 3 repo for Python.
