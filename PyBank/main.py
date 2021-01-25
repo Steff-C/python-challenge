@@ -12,20 +12,29 @@ with open(budgetfile_path) as csvfile:
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
-# Assign Variables
+# Assign Variables    
     TotalMonths = 0
-    NetProfitLoss = 0
+    TotalProfitLoss = 0
     AvgChange = 0
     GreatestIncrease = 0
+    GreatestIncreaseMonth = ""
     GreatestDecrease = 0 
-    Previous = 0
-    Current = 0
+    GreatestDecreaseMonth = ""
+    PreviousTotal = 0
+    CurrentTotal = 0
     Counter = 0
+    TotalAmount = 0
 
     for row in csvreader:
         Counter = Counter+1
         month = row [0]
         profitloss = int(row[1])
         TotalMonths = TotalMonths+1
-        NetProfitLoss = NetProfitLoss + profitloss
+        TotalProfitLoss = TotalProfitLoss + profitloss
+        
+
+    print("Financial Analysis")
+    print("----------------------------------")
+    print(f"Total Months: {TotalMonths}")       
+
 
