@@ -18,28 +18,46 @@ with open(ElectionData_path) as csvfile:
     
 # Read Header    
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    # print(f"CSV Header: {csv_header}")
         
 # Assign Variables and List
-Count = 0
-Candidates = []
-UniqueCandidates = []
-NumVotes = []
-PercentageVotes = []
+    Count = 0
+    Candidates = []
+    UniqueCandidates = []
+    NumVotes = []
+    PercentageVotes = []
 
-for row in csvreader:
-    Count = Count + 1 
-    Candidates.append(row[2])
-for Distinct in set(Candidates):
-    UniqueCandidates.append(Distinct)
-    DistinctV = Candidates.count(Distinct)
-    NumVotes.append(DistinctV)
-    PPC = (DistinctV/count)*100
-    PercentageVotes.append(PPC)
+    for row in csvreader:
+        Count = Count + 1 
+        Candidates.append(row[2])
+    for Distinct in set(Candidates):
+        UniqueCandidates.append(Distinct)
+        DistinctV = Candidates.count(Distinct)
+        NumVotes.append(DistinctV)
+        PPC = (DistinctV/Count)*100
+        PercentageVotes.append(PPC)
 
-print (count)
-        
+# Testing
+# print(UniqueCandidates)
+# print(Count)
+# print(NumVotes)
+# print(PercentageVotes)
   
-   
+# Print  Answers to Terminal  (Copied what I used from PyBank and adjusted as needed)
+print(f"Election Results")
+print(f"----------------------------------")
+print(f"Total Votes: {Count}")
+print(f"----------------------------------")
+print(f"{UniqueCandidates[0]}: {PercentageVotes[0]:.2f}% ({NumVotes[0]})")
+print(f"----------------------------------")
 
-
+# Export Answers to Text File (Copied what I used from PyBank and adjusted as needed)
+Text_File_Export = os.path.join("analysis", "election_data.txt")
+with open(Text_File_Export, 'w', newline='') as csvfile:
+    print(f"Election Results",file=csvfile)
+    print(f"----------------------------------",file=csvfile)
+    print(f"Total Votes: {Count}",file=csvfile)
+    print(f"----------------------------------",file=csvfile)
+    
+# need to use max(list) for winner
+# list.sort([function]) too
