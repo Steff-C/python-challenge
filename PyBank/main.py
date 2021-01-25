@@ -23,16 +23,15 @@ with open(budgetfile_path) as csvfile:
     PreviousTotal = 0
     CurrentTotal = 0
     Counter = 0
-    TotalAmount = 0
-
+    Change = 0
+   
     for row in csvreader:
         Counter = Counter+1
-        Month = row [0]
+        Month = row[0]
         profitloss = int(row[1])
         TotalMonths = TotalMonths+1
-        TotalProfitLoss = TotalProfitLoss + profitloss
-        PreviousAmount = int(row[1])
-       
+        TotalProfitLoss = TotalProfitLoss+profitloss
+              
 # Calculate Greatest Increase       
         if profitloss>GreatestIncrease:
             GreatestIncrease=profitloss
@@ -44,7 +43,7 @@ with open(budgetfile_path) as csvfile:
             GreatestDecreaseMonth=Month
         if Counter>1:
             CurrentTotal=profitloss
-            Difference=Difference+CurrentTotal-PreviousTotal
+            Difference=Difference+(CurrentTotal-PreviousTotal)
         PreviousTotal=profitloss
 
 # Calculate Average Net Change
@@ -57,10 +56,10 @@ AverageChange = Difference/(TotalMonths-1)
 print(f"Financial Analysis")
 print(f"----------------------------------")
 print(f"Total Months: {TotalMonths}")
-print(f"Total: ${TotalProfitLoss} ")
-print(f"Average Change: ")
-print(f"Greatest Increase in Profits: ") 
-print(f"Greatest Decrease in Profits: ")
+print(f"Total: ${TotalProfitLoss}")
+print(f"Average Change: ${AverageChange:.2f}")
+print(f"Greatest Increase in Profits: {GreatestIncreaseMonth} (${GreatestIncrease}) ") 
+print(f"Greatest Decrease in Profits: {GreatestDecreaseMonth} (${GreatestDecrease})")
 
 # Export Answers to Text File
 Text_File_Export = os.path.join("analysis", "budget_analysis.txt")
@@ -69,6 +68,6 @@ with open(Text_File_Export, 'w', newline='') as csvfile:
     print(f"----------------------------------",file=csvfile)
     print(f"Total Months: {TotalMonths}",file=csvfile)
     print(f"Total: ${TotalProfitLoss} ",file=csvfile)
-    print(f"Average Change: ",file=csvfile)
-    print(f"Greatest Increase in Profits: ",file=csvfile) 
-    print(f"Greatest Decrease in Profits: ",file=csvfile)
+    print(f"Average Change: ${AverageChange:.2f}",file=csvfile)
+    print(f"Greatest Increase in Profits: {GreatestIncreaseMonth} $({GreatestIncrease})",file=csvfile) 
+    print(f"Greatest Decrease in Profits: {GreatestDecreaseMonth} $({GreatestDecrease})",file=csvfile)
