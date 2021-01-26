@@ -36,17 +36,11 @@ with open(ElectionData_path) as csvfile:
         NumVotes.append(DistinctV)
         PPC = (DistinctV/Count)*100
         PercentageVotes.append(PPC)
-        # PercentageVotes.sort(reverse=True) - Didn't work
+
 
     WinningNumVotes = max(NumVotes)
     Winner = UniqueCandidates[NumVotes.index(WinningNumVotes)]    
 
-
-# Testing
-# print(UniqueCandidates)
-# print(Count)
-# print(NumVotes)
-# print(PercentageVotes)
   
 # Print  Answers to Terminal  (Copied what I used from PyBank and adjusted as needed)
 print(f"Election Results")
@@ -68,6 +62,11 @@ with open(Text_File_Export, 'w', newline='') as csvfile:
     print(f"----------------------------------",file=csvfile)
     print(f"Total Votes: {Count}",file=csvfile)
     print(f"----------------------------------",file=csvfile)
+    print(f"{UniqueCandidates[0]}: {PercentageVotes[0]:.3f}% ({NumVotes[0]})",file=csvfile)
+    print(f"{UniqueCandidates[1]}: {PercentageVotes[1]:.3f}% ({NumVotes[1]})",file=csvfile)
+    print(f"{UniqueCandidates[2]}: {PercentageVotes[2]:.3f}% ({NumVotes[2]})",file=csvfile)
+    print(f"{UniqueCandidates[3]}: {PercentageVotes[3]:.3f}% ({NumVotes[3]})",file=csvfile)
+    print(f"----------------------------------",file=csvfile)
+    print(f"Winner: {Winner}",file=csvfile)
+    print(f"----------------------------------",file=csvfile)
     
-# need to use max(list) for winner
-# list.sort([function]) too
