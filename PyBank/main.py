@@ -27,6 +27,7 @@ with open(budgetfile_path) as csvfile:
     i =0
     
     for row in csvreader:
+# increment varibale by one in loop
         i += 1
         TotalMonths = TotalMonths+1
         if i == 1:

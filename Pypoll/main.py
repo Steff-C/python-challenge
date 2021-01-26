@@ -36,19 +36,20 @@ with open(ElectionData_path) as csvfile:
         NumVotes.append(DistinctV)
         PPC = (DistinctV/Count)*100
         PercentageVotes.append(PPC)
+        PercentageVotes.sort(reverse=True)
 
 # Testing
-# print(UniqueCandidates)
-# print(Count)
-# print(NumVotes)
-# print(PercentageVotes)
+print(UniqueCandidates)
+print(Count)
+print(NumVotes)
+print(PercentageVotes)
   
 # Print  Answers to Terminal  (Copied what I used from PyBank and adjusted as needed)
 print(f"Election Results")
 print(f"----------------------------------")
 print(f"Total Votes: {Count}")
 print(f"----------------------------------")
-print(f"{UniqueCandidates[0]}: {PercentageVotes[0]:.2f}% ({NumVotes[0]})")
+print(f"{UniqueCandidates[0]}: {PercentageVotes[0]:.3f}% ({NumVotes[0]})")
 print(f"----------------------------------")
 
 # Export Answers to Text File (Copied what I used from PyBank and adjusted as needed)
