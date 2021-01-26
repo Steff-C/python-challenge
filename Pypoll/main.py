@@ -36,17 +36,17 @@ with open(ElectionData_path) as csvfile:
         NumVotes.append(DistinctV)
         PPC = (DistinctV/Count)*100
         PercentageVotes.append(PPC)
-        # PercentageVotes.sort(reverse=True)
+        # PercentageVotes.sort(reverse=True) - Didn't work
 
     WinningNumVotes = max(NumVotes)
     Winner = UniqueCandidates[NumVotes.index(WinningNumVotes)]    
 
 
 # Testing
-print(UniqueCandidates)
-print(Count)
-print(NumVotes)
-print(PercentageVotes)
+# print(UniqueCandidates)
+# print(Count)
+# print(NumVotes)
+# print(PercentageVotes)
   
 # Print  Answers to Terminal  (Copied what I used from PyBank and adjusted as needed)
 print(f"Election Results")
@@ -58,7 +58,8 @@ print(f"{UniqueCandidates[1]}: {PercentageVotes[1]:.3f}% ({NumVotes[1]})")
 print(f"{UniqueCandidates[2]}: {PercentageVotes[2]:.3f}% ({NumVotes[2]})")
 print(f"{UniqueCandidates[3]}: {PercentageVotes[3]:.3f}% ({NumVotes[3]})")
 print(f"----------------------------------")
-print(f"Winner: {Count}")
+print(f"Winner: {Winner}")
+print(f"----------------------------------")
 
 # Export Answers to Text File (Copied what I used from PyBank and adjusted as needed)
 Text_File_Export = os.path.join("analysis", "election_data.txt")
